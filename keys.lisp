@@ -11,13 +11,18 @@
 (define-key *top-map* (kbd "s-[") "fprev")
 (define-key *top-map* (kbd "s-]") "fnext")
 
-;; focus
-(define-key *top-map* (kbd "s-h") "move-focus left")
-(define-key *top-map* (kbd "s-j") "move-focus down")
-(define-key *top-map* (kbd "s-k") "move-focus up")
-(define-key *top-map* (kbd "s-l") "move-focus right")
+;; Frames navigation using HJKL
+(loop for (vi-key name) in '(("k" "up")
+                             ("j" "down")
+                             ("h" "left")
+                             ("l" "right"))
+      do (let ((key-combo (format nil "s-~A" vi-key))
+               (shifted-key-combo (format nil "s-~A" (string-upcase vi-key))))
+           (define-key *top-map* (kbd key-combo)
+             (format nil "move-focus ~A" name))
+           (define-key *top-map* (kbd shifted-key-combo)
+             (format nil "move-window ~A" name))));; split
 
-;; split
 (define-key *top-map* (kbd "s-s") "hsplit")
 (define-key *top-map* (kbd "s-v") "vsplit")
 (define-key *top-map* (kbd "s-X") "remove-split")
