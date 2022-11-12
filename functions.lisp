@@ -17,3 +17,7 @@
            (current-screen)
            "starting slynk. M-x sly-connect RET 4004 then (in package stumpwm).")
           (setf server-running t)))))
+
+(defun empty-directory-p (path)
+  (and (null (directory (concatenate 'string path "/*")))
+       (null (directory (concatenate 'string path "/*/")))))
