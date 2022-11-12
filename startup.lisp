@@ -13,6 +13,7 @@
     (run-shell-command "udiskie -t")
     (run-shell-command "dunst -conf ~/.config/dunst/dunstrc")
     (run-shell-command "blueman-applet")
+    (run-shell-command "volumeicon")
     (run-shell-command "xsettingsd")
     (run-shell-command "unclutter")
     (run-shell-command "/usr/lib/geoclue-2.0/demos/agent")
