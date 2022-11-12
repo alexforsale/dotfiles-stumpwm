@@ -48,3 +48,17 @@
 (define-key *top-map* (kbd "s-*") "gmove 8")
 (define-key *top-map* (kbd "s-(") "gmove 9")
 (define-key *top-map* (kbd "s-)") "gmove 0")
+
+(define-key *top-map* (kbd "XF86AudioLowerVolume") "exec pactl -- set-sink-volume @DEFAULT_SINK@ -2%")
+(define-key *top-map* (kbd "XF86AudioRaiseVolume") "exec pactl -- set-sink-volume @DEFAULT_SINK@ +2%")
+(define-key *top-map* (kbd "XF86AudioMute") "exec pactl -- set-sink-mute @DEFAULT_SINK@ toggle")
+
+(define-key *top-map* (kbd "XF86AudioPlay") "exec playerctl play-pause")
+(define-key *top-map* (kbd "XF86AudioNext") "exec playerctl next")
+(define-key *top-map* (kbd "XF86AudioPrev") "exec playerctl previous")
+
+(define-key *top-map* (kbd "XF86MonBrightnessDown") "exec brightnessctl set 1%-")
+(define-key *top-map* (kbd "XF86MonBrightnessUp") "exec brightnessctl set +1%")
+
+(define-key *top-map* (kbd "s-F2") "exec picom-trans -c -5")
+(define-key *top-map* (kbd "s-F3") "exec picom-trans -c +5")
