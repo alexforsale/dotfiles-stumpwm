@@ -57,8 +57,12 @@
 (define-key *top-map* (kbd "XF86AudioNext") "exec playerctl next")
 (define-key *top-map* (kbd "XF86AudioPrev") "exec playerctl previous")
 
+(define-key *top-map* (kbd "Print") "exec flameshot gui")
+
 (define-key *top-map* (kbd "XF86MonBrightnessDown") "exec brightnessctl set 1%-")
 (define-key *top-map* (kbd "XF86MonBrightnessUp") "exec brightnessctl set +1%")
 
 (define-key *top-map* (kbd "s-F2") "exec picom-trans -c -5")
 (define-key *top-map* (kbd "s-F3") "exec picom-trans -c +5")
+
+(define-key *top-map* (kbd "s-quoteleft") "send-raw-key")
