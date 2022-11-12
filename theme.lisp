@@ -87,3 +87,10 @@
 (set-float-focus-color *color3*)
 (set-float-unfocus-color *color3*)
 (setf *key-seq-color* *color3*)
+
+;; grabbed pointer
+(setq
+ *grab-pointer-character* 40
+ *grab-pointer-character-mask* 41
+ *grab-pointer-foreground* (hex-to-xlib-color *foreground*)
+ *grab-pointer-background* (hex-to-xlib-color *background*))
