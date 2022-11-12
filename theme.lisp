@@ -1,6 +1,6 @@
 ;; font
 (ql:quickload :clx-truetype)
-(ql:quickload :ttf-font)
+(ql:quickload :ttf-fonts)
 
 (setf xft:*font-dirs* `("/usr/share/fonts/"
                         "/usr/local/share/fonts"
