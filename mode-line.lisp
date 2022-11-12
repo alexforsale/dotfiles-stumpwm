@@ -19,7 +19,6 @@
        '(:eval (when (or (not (empty-directory-p "/sys/class/backlight")) (not (empty-directory-p "/dev/backlight"))) (format nil "^6|Backlight: ~D%" (show-brightness-value))))
        '(:eval (when (or (not (empty-directory-p "/sys/class/power_supply")) (not (eq 255 (parse-integer (remove #\Newline (run-shell-command "apm -l" t)))))) (format nil "^5|Battery:~D" (show-battery-charge))))
        '(:eval (when (or (not (empty-directory-p "/sys/class/power_supply")) (not (eq 255 (parse-integer (remove #\Newline (run-shell-command "apm -l" t)))))) (format nil " ~D" (show-battery-state))))
-       "^6|%D" ;maildir
        "^5|%d"
        ))
 

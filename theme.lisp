@@ -1,3 +1,13 @@
+;; font
+(ql:quickload :clx-truetype)
+(ql:quickload :ttf-font)
+
+(setf xft:*font-dirs* `("/usr/share/fonts/"
+                        "/usr/local/share/fonts"
+                        ,(merge-pathnames ".local/share/fonts"
+                                          (user-homedir-pathname))))
+(set-font (make-instance 'xft:font :family "Fira Code" :subfamily "Regular" :size 8))
+
 ;; colors
 (defvar default-colors
   '("#263238"
