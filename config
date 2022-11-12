@@ -194,7 +194,7 @@
     (run-shell-command "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
     (run-shell-command "picom")
     (run-shell-command "udiskie -t")
-    (run-shell-command "dunst")
+    (run-shell-command "dunst -conf ~/.config/dunst/dunstrc")
     (run-shell-command "blueman-applet")
     (run-shell-command "xsettingsd")
     (run-shell-command "unclutter")
