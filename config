@@ -7,10 +7,24 @@
 (ql:quickload :slynk)
 
 (require :slynk)
-(defcommand stump-slynk-server () ()
-  (slynk:create-server :port 4004
-                       :dont-close t))
-;;(stump-slynk-server)
+(let ((server-running nil))
+  (defcommand stump-slynk () ()
+    "Toggle the slynk server on/off"
+    (if server-running
+        (progn
+          (slynk:stop-server 4004)
+          (echo-string
+           (current-string)
+           "stopping slynk.")
+          (setf server-running nil)
+          )
+        (progn
+          (slynk:create-server :port 4004
+                               :dont-close t)
+          (echo-string
+           (current-string)
+           "starting slynk. M-x sly-connect RET 4004 then (in package stumpwm).")
+          (setf server-running t)))))
 
 ;; from arch wiki
 (set-prefix-key (kbd "s-SPC"))
@@ -22,10 +36,16 @@
 (enable-mode-line (current-screen) (current-head) t)
 
 ;; keybinding
+;; top map
 (define-key *top-map* (kbd "s-TAB") "gother")
 (define-key *top-map* (kbd "s-d") "exec rofi-menu")
 (define-key *top-map* (kbd "s-w") "exec rofi -show windowcd -theme themes/stump.rasi")
 (define-key *top-map* (kbd "s-W") "exec rofi -show window -theme themes/stump.rasi")
+
+;; root map
+;; after prefix-key
+(define-key *root-map* (kbd "s") "stump-slynk")
+(define-key *root-map* (kbd "s-s") "stump-slynk")
 
 ;; groups
 (define-key *top-map* (kbd "s-1") "gselect 1")
