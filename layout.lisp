@@ -36,6 +36,7 @@
 
 (define-frame-preference "Web"
   (4 t t :create "nyxt-dump" :class "Nyxt")
+  (4 t t :create "qute-dump" :class "qutebrowser")
   (4 t t :create "firefox-dump" :class "firefox"))
 
 (define-frame-preference "Media"
@@ -49,4 +50,5 @@
 
 (define-frame-preference "Remote"
   (6 t t :create "virtmanager-dump" :class "Virt-manager")
+  (6 t t :create "remmina-dump" :class "org.remmina.remmina")
   (6 t t :create "vncviewer-dump" :class "Vncviewer"))
