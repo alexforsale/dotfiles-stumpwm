@@ -12,6 +12,7 @@
 (defun load-config-file (filename)
   (load (format nil "~A/~A" *configdir* filename)))
 (load-config-file "startup.lisp")
+(load-config-file "modules.lisp")
 (load-config-file "functions.lisp")
 (load-config-file "theme.lisp")
 (load-config-file "layout.lisp")

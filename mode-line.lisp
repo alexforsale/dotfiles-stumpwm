@@ -1,3 +1,6 @@
+(ql:quickload :xembed)
+(load-module "stumptray")
+
 (setf *window-format* "%m%n%s%c")
 (setf *screen-mode-line-format* (list "[^B%n^b] %W^>%d"))
 (setf *time-modeline-string* "%a %b %e %k:%M")
