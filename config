@@ -14,7 +14,7 @@
         (progn
           (slynk:stop-server 4004)
           (echo-string
-           (current-string)
+           (current-screen)
            "stopping slynk.")
           (setf server-running nil)
           )
@@ -22,7 +22,7 @@
           (slynk:create-server :port 4004
                                :dont-close t)
           (echo-string
-           (current-string)
+           (current-screen)
            "starting slynk. M-x sly-connect RET 4004 then (in package stumpwm).")
           (setf server-running t)))))
 
