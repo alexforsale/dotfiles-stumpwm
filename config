@@ -29,6 +29,93 @@
 ;; from arch wiki
 (set-prefix-key (kbd "s-SPC"))
 (setf *mouse-focus-policy* :click)
+(setf *run-or-raise-all-groups* t)
+(setf *run-or-raise-all-screens* t)
+(setf set-transient-gravity :center)
+
+;; colors
+
+;; start wal to populate the Xresources
+(run-shell-command "wal -R")
+
+(defvar default-colors
+  '("#263238"
+    "#EC5F67"
+    "#8BD649"
+    "#FFCC00"
+    "#89DDFF"
+    "#82AAFF"
+    "#80CBC4"
+    "#CDD3DE"
+    "#707880"
+    "#EC5F67"
+    "#8BD649"
+    "#FFCC00"
+    "#89DDFF"
+    "#82AAFF"
+    "#80CBC4"
+    "#FFFFFF"))
+(defvar wal-colors-path "~/.cache/wal/colors")
+
+(defun get-color-palette ()
+  "Read colors from wal cache file or from `default-colors'."
+  (let ((wal-colors (when (probe-file wal-colors-path)
+                      (uiop:read-file-lines wal-colors-path))))
+    (or wal-colors default-colors)))
+
+(defun get-color (name)
+  "Map the colors from `get-color-palette'."
+  (let ((colors (mapcar 'cons
+                        '("color0"
+                          "color1"
+                          "color2"
+                          "color3"
+                          "color4"
+                          "color5"
+                          "color6"
+                          "color7"
+                          "color8"
+                          "color9"
+                          "color10"
+                          "color11"
+                          "color12"
+                          "color13"
+                          "color14"
+                          "color15")
+                        (get-color-palette))))
+    (cdr (assoc name colors :test 'equal))))
+
+(setf *background* (get-color "color0"))
+(setf *foreground* (get-color "color7"))
+(setf *color0* (get-color "color0"))
+(setf *color1* (get-color "color1"))
+(setf *color2* (get-color "color2"))
+(setf *color3* (get-color "color3"))
+(setf *color4* (get-color "color4"))
+(setf *color5* (get-color "color5"))
+(setf *color6* (get-color "color6"))
+(setf *color7* (get-color "color7"))
+(setf *color8* (get-color "color8"))
+(setf *color9* (get-color "color9"))
+(setf *color10* (get-color "color10"))
+(setf *color11* (get-color "color11"))
+(setf *color12* (get-color "color12"))
+(setf *color13* (get-color "color13"))
+(setf *color14* (get-color "color14"))
+(setf *color15* (get-color "color15"))
+
+(setq *colors*
+      `(,*color0* ,*color1* ,*color2* ,*color3* ,*color4* ,*color5* ,*color6* ,*color7* ,*color8* ,*color9*))
+
+(update-color-map (current-screen))
+(set-fg-color *color7*)
+(set-bg-color *color0*)
+(set-border-color *color2*)
+(set-focus-color *color3*)
+(set-unfocus-color *color3*)
+(set-float-focus-color *color3*)
+(set-float-unfocus-color *color3*)
+
 (setf *window-format* "%m%n%s%c")
 (setf *screen-mode-line-format* (list "[^B%n^b] %W^>%d"))
 (setf *time-modeline-string* "%a %b %e %k:%M")
@@ -41,10 +128,27 @@
 (define-key *top-map* (kbd "s-d") "exec rofi-menu")
 (define-key *top-map* (kbd "s-w") "exec rofi -show windowcd -theme themes/stump.rasi")
 (define-key *top-map* (kbd "s-W") "exec rofi -show window -theme themes/stump.rasi")
+(define-key *top-map* (kbd "M-TAB") "other")
+(define-key *top-map* (kbd "s-RET") "exec $TERMINAL")
+
+;; next/prev frame
+(define-key *top-map* (kbd "s-[") "fprev")
+(define-key *top-map* (kbd "s-]") "fnext")
+
+;; focus
+(define-key *top-map* (kbd "s-h") "move-focus left")
+(define-key *top-map* (kbd "s-j") "move-focus down")
+(define-key *top-map* (kbd "s-k") "move-focus up")
+(define-key *top-map* (kbd "s-l") "move-focus right")
+
+;; split
+(define-key *top-map* (kbd "s-s") "hsplit")
+(define-key *top-map* (kbd "s-v") "vsplit")
+(define-key *top-map* (kbd "s-X") "remove-split")
 
 ;; root map
 ;; after prefix-key
-(define-key *root-map* (kbd "s") "stump-slynk")
+;;(define-key *root-map* (kbd "s") "stump-slynk")
 (define-key *root-map* (kbd "s-s") "stump-slynk")
 
 ;; groups
@@ -69,6 +173,26 @@
 (define-key *top-map* (kbd "s-(") "gmove 9")
 (define-key *top-map* (kbd "s-)") "gmove 0")
 
-(run-commands "grename dev")
+;; set groups
+(run-commands "grename term")
+(run-commands "gnewbg dev")
+(run-commands "gnewbg web")
+(run-commands "gnewbg mail")
 
-(setf *mode-line-timeout* 2)
+;; startup commands
+(when *initializing*
+  (progn
+    (run-shell-command "~/.fehbg ")
+    (run-shell-command "xrdb merge ~/.Xresources")
+    (run-shell-command "xsetroot -cursor_name left_ptr")
+    (run-shell-command "xset r rate 300 30")
+    (run-shell-command "nm-applet")
+    (run-shell-command "iwgtk -i")
+    (run-shell-command "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
+    (run-shell-command "picom")
+    (run-shell-command "udiskie -t")
+    (run-shell-command "dunst")
+    (run-shell-command "blueman-applet")
+    (run-shell-command "xsettingsd")
+    (run-shell-command "unclutter")
+    (run-shell-command "/usr/lib/geoclue-2.0/demos/agent")))
