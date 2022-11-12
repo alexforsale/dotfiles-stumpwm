@@ -36,7 +36,6 @@
 ;; colors
 
 ;; start wal to populate the Xresources
-(run-shell-command "wal -R")
 
 (defvar default-colors
   '("#263238"
@@ -115,11 +114,14 @@
 (set-unfocus-color *color3*)
 (set-float-focus-color *color3*)
 (set-float-unfocus-color *color3*)
+(setf *key-seq-color* *color3*)
 
 (setf *window-format* "%m%n%s%c")
 (setf *screen-mode-line-format* (list "[^B%n^b] %W^>%d"))
 (setf *time-modeline-string* "%a %b %e %k:%M")
 (setf *mode-line-timeout* 2)
+(setf *mode-line-background-color* *color0*)
+(setf *mode-line-foreground-color* *color7*)
 (enable-mode-line (current-screen) (current-head) t)
 
 ;; keybinding
@@ -183,6 +185,7 @@
 (when *initializing*
   (progn
     (run-shell-command "~/.fehbg ")
+    (run-shell-command "wal -R")
     (run-shell-command "xrdb merge ~/.Xresources")
     (run-shell-command "xsetroot -cursor_name left_ptr")
     (run-shell-command "xset r rate 300 30")
@@ -195,4 +198,5 @@
     (run-shell-command "blueman-applet")
     (run-shell-command "xsettingsd")
     (run-shell-command "unclutter")
-    (run-shell-command "/usr/lib/geoclue-2.0/demos/agent")))
+    (run-shell-command "/usr/lib/geoclue-2.0/demos/agent")
+    (which-key-mode)))
