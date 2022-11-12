@@ -18,9 +18,11 @@
        '(:eval (when (or (not (empty-directory-p "/sys/class/backlight")) (not (empty-directory-p "/dev/backlight"))) (format nil "^4|Backlight: ~D%" (show-brightness-value))))
        '(:eval (when (or (not (empty-directory-p "/sys/class/power_supply")) (not (eq 255 (parse-integer (remove #\Newline (run-shell-command "apm -l" t)))))) (format nil "^3|Battery:~D" (show-battery-charge))))
        '(:eval (when (or (not (empty-directory-p "/sys/class/power_supply")) (not (eq 255 (parse-integer (remove #\Newline (run-shell-command "apm -l" t)))))) (format nil " ~D" (show-battery-state))))
-       "^5|%d"
+       "^5|%d          "
        ))
 
 (enable-mode-line (current-screen) (current-head) t)
 
+(setf stumptray:*tray-viwin-background* *background*)
+(setf stumptray:*tray-hiwin-background* *background*)
 (stumptray:stumptray)
