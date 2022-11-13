@@ -14,7 +14,7 @@
 (run-commands "gnewbg Remote") ;; 6
 (run-commands "gnewbg Games") ;; 7
 (run-commands "gnewbg Float") ;; 8
-(run-commands "gnewbg Other") ;; 9
+(run-commands "gnewbg Misc") ;; 9
 
 
 ;; frame preferences
@@ -45,6 +45,7 @@
   (5 t t :create "picard-dump" :class "Picard")
   (5 t t :create "mpv-dump" :class "mpv")
   (5 t t :create "vlc-dump" :class "vlc")
+  (5 t t :class "Rhythmbox")
   (5 t t :create "hakuneko-dump" :class "hakuneko-desktop")
   (5 t t :create "gimp-dump" :class "Gimp"))
 
@@ -55,3 +56,7 @@
 
 (define-frame-preference "Games"
   (7 t t :class "Steam"))
+
+(define-frame-preference "Misc"
+  (9 t t :class "gucharmap")
+  (8 t t :class "Libreoffice"))
