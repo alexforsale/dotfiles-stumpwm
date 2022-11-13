@@ -52,3 +52,6 @@
   (6 t t :create "virtmanager-dump" :class "Virt-manager")
   (6 t t :create "remmina-dump" :class "org.remmina.remmina")
   (6 t t :create "vncviewer-dump" :class "Vncviewer"))
+
+(define-frame-preference "Games"
+  (7 t t :class "Steam"))
