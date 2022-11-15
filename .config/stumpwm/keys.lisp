@@ -27,6 +27,12 @@
 (define-key *top-map* (kbd "s-v") "vsplit")
 (define-key *top-map* (kbd "s-X") "remove-split")
 
+;; float
+(define-key *top-map* (kbd "s-f") "float-this")
+(define-key *top-map* (kbd "s-F") "unfloat-this")
+(define-key *top-map* (kbd "s-u") "unfloat-this")
+(define-key *root-map* (kbd "C-f") "flatten-floats")
+
 ;; root map
 ;; after prefix-key
 ;;(define-key *root-map* (kbd "s") "stump-slynk")
