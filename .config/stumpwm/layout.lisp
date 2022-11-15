@@ -21,6 +21,7 @@
 (clear-window-placement-rules)
 
 (define-frame-preference "Term"
+  (1 t t :class "Alacritty")
   (1 t t :class "XTerm")
   (1 t t :class "Termite")
   (1 t t :class "URxvt"))
