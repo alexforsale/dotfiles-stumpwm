@@ -33,16 +33,18 @@
   (2 t t :class "code-oss")
   (2 t t :class "Gvim"))
 
-(define-frame-preference "Mail"
-  (3 t t :create "evolution-dump" :class "Evolution"))
-
 (define-frame-preference "Web"
-  (4 t t :create "nyxt-dump" :class "Nyxt")
-  (4 t t :create "qute-dump" :class "qutebrowser")
-  (4 t t :create "qute-dump" :class "Google-chrome")
-  (4 t t :class "Google-chrome")
-  (4 t t :class "Firefox")
-  (4 t t :class "firefox"))
+  (3 t t :create "nyxt-dump" :class "Nyxt")
+  (3 t t :create "qute-dump" :class "qutebrowser")
+  (3 t t :create "qute-dump" :class "Google-chrome")
+  (3 t t :class "Google-chrome")
+  (3 t t :class "firefox")
+  (3 t t :class "firefox"))
+
+(define-frame-preference "Mail"
+  (4 t t :class "Thunderbird")
+  (4 t t :class "thunderbird")
+  (4 t t :create "evolution-dump" :class "Evolution"))
 
 (define-frame-preference "Media"
   (5 t t :create "cheese-dump" :class "Cheese")
@@ -65,3 +67,6 @@
 (define-frame-preference "Misc"
   (9 t t :class "gucharmap")
   (8 t t :class "Libreoffice"))
+
+(define-frame-preference "Misc2"
+  (0 t t :class "winbox.exe"))
