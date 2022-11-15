@@ -17,4 +17,5 @@
     (run-shell-command "xsettingsd")
     (run-shell-command "unclutter")
     (run-shell-command "/usr/lib/geoclue-2.0/demos/agent")
+    (run-shell-command "greenclip daemon>/dev/null")
     (which-key-mode)))

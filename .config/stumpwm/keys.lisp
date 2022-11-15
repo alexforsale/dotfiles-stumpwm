@@ -71,3 +71,5 @@
 (define-key *top-map* (kbd "s-F3") "exec picom-trans -c +5")
 
 (define-key *top-map* (kbd "s-quoteleft") "send-raw-key")
+
+(define-key *top-map* (kbd "s-c") "rofi -theme stumpwm -modi \"clipboard:greenclip print\" -show clipboard")
