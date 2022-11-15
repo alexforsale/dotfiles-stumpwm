@@ -72,4 +72,4 @@
 
 (define-key *top-map* (kbd "s-quoteleft") "send-raw-key")
 
-(define-key *top-map* (kbd "s-c") "exec rofi -theme stumpwm -modi \"clipboard:greenclip print\" -show clipboard")
+(define-key *top-map* (kbd "s-c") "exec rofi -theme stump -modi \"clipboard:greenclip print\" -show clipboard")
