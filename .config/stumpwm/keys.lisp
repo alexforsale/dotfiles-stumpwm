@@ -42,6 +42,7 @@
 (define-key *top-map* (kbd "s-7") "gselect 7")
 (define-key *top-map* (kbd "s-8") "gselect 8")
 (define-key *top-map* (kbd "s-9") "gselect 9")
+(define-key *top-map* (kbd "s-9") "gselect 0")
 (define-key *top-map* (kbd "s-!") "gmove-and-follow 1")
 (define-key *top-map* (kbd "s-@") "gmove-and-follow 2")
 (define-key *top-map* (kbd "s-#") "gmove-and-follow 3")
@@ -51,6 +52,7 @@
 (define-key *top-map* (kbd "s-&") "gmove-and-follow 7")
 (define-key *top-map* (kbd "s-*") "gmove-and-follow 8")
 (define-key *top-map* (kbd "s-(") "gmove-and-follow 9")
+(define-key *top-map* (kbd "s-(") "gmove-and-follow 0")
 
 (define-key *top-map* (kbd "XF86AudioLowerVolume") "exec pactl -- set-sink-volume @DEFAULT_SINK@ -2%")
 (define-key *top-map* (kbd "XF86AudioRaiseVolume") "exec pactl -- set-sink-volume @DEFAULT_SINK@ +2%")

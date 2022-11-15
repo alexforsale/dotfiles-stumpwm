@@ -15,6 +15,7 @@
 (run-commands "gnewbg Games") ;; 7
 (run-commands "gnewbg Float") ;; 8
 (run-commands "gnewbg Misc") ;; 9
+(run-commands "gnewbg Misc2") ;; 0
 
 
 ;; frame preferences
@@ -38,7 +39,10 @@
 (define-frame-preference "Web"
   (4 t t :create "nyxt-dump" :class "Nyxt")
   (4 t t :create "qute-dump" :class "qutebrowser")
-  (4 t t :create "firefox-dump" :class "firefox"))
+  (4 t t :create "qute-dump" :class "Google-chrome")
+  (4 t t :class "Google-chrome")
+  (4 t t :class "Firefox")
+  (4 t t :class "firefox"))
 
 (define-frame-preference "Media"
   (5 t t :create "cheese-dump" :class "Cheese")
