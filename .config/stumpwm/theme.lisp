@@ -6,6 +6,7 @@
                         "/usr/local/share/fonts"
                         ,(merge-pathnames ".local/share/fonts"
                                           (user-homedir-pathname))))
+(xft:cache-fonts)
 (set-font (make-instance 'xft:font :family "Fira Code" :subfamily "Regular" :size 8))
 
 ;; colors
