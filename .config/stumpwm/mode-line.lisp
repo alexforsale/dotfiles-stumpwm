@@ -14,11 +14,11 @@
       (list
        "[^B^3%n^b] ^4%W"
        "^>"
-       '(:eval (format nil "^5|Volume: ~D" (show-current-volume)))
-       '(:eval (when (or (not (empty-directory-p "/sys/class/backlight")) (not (empty-directory-p "/dev/backlight"))) (format nil "^4|Backlight: ~D%" (show-brightness-value))))
-       '(:eval (when (or (not (empty-directory-p "/sys/class/power_supply")) (not (eq 255 (parse-integer (remove #\Newline (run-shell-command "apm -l" t)))))) (format nil "^3|Battery:~D" (show-battery-charge))))
-       '(:eval (when (or (not (empty-directory-p "/sys/class/power_supply")) (not (eq 255 (parse-integer (remove #\Newline (run-shell-command "apm -l" t)))))) (format nil " ~D" (show-battery-state))))
-       "^5|%d          "
+       '(:eval (format nil "^7|Volume: ~D" (show-current-volume)))
+       '(:eval (when (or (not (empty-directory-p "/sys/class/backlight")) (not (empty-directory-p "/dev/backlight"))) (format nil "^7|Backlight: ~D%" (show-brightness-value))))
+       '(:eval (when (or (not (empty-directory-p "/sys/class/power_supply")) (not (eq 255 (parse-integer (remove #\Newline (run-shell-command "apm -l" t)))))) (format nil "^7|Battery:~D" (show-battery-charge))))
+       '(:eval (when (or (not (empty-directory-p "/sys/class/power_supply")) (not (eq 255 (parse-integer (remove #\Newline (run-shell-command "apm -l" t)))))) (format nil " ^7~D" (show-battery-state))))
+       "^7|%d          "
        ))
 
 (enable-mode-line (current-screen) (current-head) t)
