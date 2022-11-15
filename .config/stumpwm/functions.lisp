@@ -83,3 +83,8 @@
   (let ((current-volume
           (run-shell-command "amixer -c 0 get Master | tail -1 | awk '{print $4}' | sed 's/[^0-9]*//g'" t)))
     (substitute #\Space #\Newline current-volume)))
+
+;; toggle mode-line
+(defcommand stump-toggle-mode-line () ()
+  "Toggle mode-line"
+  (toggle-mode-line (current-screen) (current-head)))
