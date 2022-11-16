@@ -65,8 +65,10 @@
   (7 t t :class "Steam"))
 
 (define-frame-preference "Misc"
+  (9 t t :class "bitwarden")
+  (9 t t :class "Bitwarden")
   (9 t t :class "gucharmap")
-  (8 t t :class "Libreoffice"))
+  (9 t t :class "Libreoffice"))
 
 (define-frame-preference "Misc2"
   (0 t t :class "winbox.exe"))
